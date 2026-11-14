@@ -24,6 +24,12 @@
         "nav    main   aside"
         "footer footer footer";
     }
+    .cards-row {
+      display: flex;
+      gap: 20px;        /* Space between the two cards */
+      margin-top: 1rem; /* Space below the "Current Radiation" heading */
+      flex-wrap: wrap;  /* Stacks them cleanly on very small mobile screens */
+    }
     
     .card1 {
       background: white;
@@ -167,15 +173,17 @@
   <main>
     <section id="section1" class="active">
       <h2>Current Radiation</h2>
-      <div class="card1">
-        <b>Last minute CPM</b>
-        <div id="ha-waarde">--</div>
-        <div id="status"></div>
-      </div>
-      <div class="card1">
-        <b>5 minute average count CPM</b>
-        <div id="ha-waarde">--</div>
-        <div id="status"></div>
+      <div class="cards-row">
+        <div class="card1">
+          <b>Last minute CPM</b>
+          <div id="ha-waarde">--</div>
+          <div id="status"></div>
+        </div>
+        <div class="card1">
+          <b>5 minute average count CPM</b>
+          <div id="ha-waarde">--</div>
+          <div id="status"></div>
+        </div>
       </div>
       <br><br></br><p><b>Normal background radiation levels</b></p>
       <ul>
