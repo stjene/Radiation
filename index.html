@@ -31,6 +31,34 @@
       flex-wrap: wrap;  /* Stacks them cleanly on very small mobile screens */
     }
     
+    /* Make the second main tile flexible so it fits the 3 inner tiles */
+    .card-wide {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    /* Container to put the 3 items side by side inside the second tile */
+    .sub-cards-row {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+    
+    /* Individual inner tiles */
+    .sub-card {
+      background: #f8fafc; /* Light tint so they stand out inside the white card */
+      border: 1px solid #e2e8f0;
+      padding: 15px;
+      border-radius: 6px;
+      min-width: 140px;
+      flex: 1; /* Makes all 3 inner tiles equal width */
+      text-align: center;
+    }
+
     .card1 {
       background: white;
       padding: 20px;
@@ -173,6 +201,32 @@
   <main>
     <section id="section1" class="active">
       <h2>Current Radiation</h2>
+      <div class="cards-row">
+        <!-- First Tile -->
+        <div class="card1">
+          <b>Last minute CPM</b>
+          <div id="ha-waarde">--</div>
+          <div id="status"></div>
+        </div>
+        <div class="card-wide">
+          <b>Current measurement</b>
+          <div class="sub-cards-row">
+            <div class="sub-card">
+              <b>Elapsed time</b>
+              <div id="time">--</div>
+            </div>
+            <div class="sub-card">
+              <b>Average CPM</b>
+              <div id="avg">--</div>
+            </div>
+            <div class="sub-card">
+              <b>Estimated yearly dose</b>
+              <div id="dose">--</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div class="cards-row">
         <div class="card1">
           <b>Last minute CPM</b>
