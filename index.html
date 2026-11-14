@@ -25,11 +25,20 @@
         "footer footer footer";
     }
     
-    .card {
+    .card1 {
       background: white;
       padding: 20px;
       border-radius: 8px;
-      inline-size: 300px;
+      inline-size: 200px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card2 {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      inline-size: 600px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       text-align: center;
     }
@@ -158,7 +167,7 @@
   <main>
     <section id="section1" class="active">
       <h2>Current Radiation</h2>
-      <div class="card">
+      <div class="card1">
         <b>CPM</b>
         <div id="ha-waarde">--</div>
         <div id="status"></div>
@@ -180,18 +189,25 @@
 
     <section id="section2">
       <h2>Background info</h2>
-      <div>
-      <p>I was 16 years old when the Chernobyl nuclear disaster occurred.</p>
-      <p></p>That was about 2,000 km away from where I lived.</p>
-      <p>The radioactive cloud reached us a week later. This led to minor soil and food contamination, as well as temporary precautionary measures, such as washing vegetables and keeping livestock indoors.</p>
-      <p>I have always found it quite remarkable that the livestock had to be kept inside, while we did not.</p>
-    </div>
-      <br><p>In 2011, the Fukushima nuclear disaster occurred.</p>
-      <p></p>Residents in the surrounding area were evacuated. This took place as events unfolded at the nuclear power plant, and the evacuation zone was subsequently expanded as more information regarding radiation levels became available.</p>
-      <p>In the meantime, many have been able to return to their villages following large-scale soil decontamination efforts.</p>
-      <br><p>Kapellen, the town where I live, is located about 10 km from the nuclear power plant in Doel.</p>
+      <div class = "card2">
+        <h3>Chernobyl</h3>
+        <p>I was 16 years old when the Chernobyl nuclear disaster occurred.</p>
+        <p></p>That was about 2,000 km away from where I lived.</p>
+        <p>The radioactive cloud reached us a week later. This led to minor soil and food contamination, as well as temporary precautionary measures, such as washing vegetables and keeping livestock indoors.</p>
+        <p>I have always found it quite remarkable that the livestock had to be kept inside, while we did not.</p>
+      </div>
+      <br><div class = "card2">
+        <h3>Fukushima</h3>
+        <br><p>In 2011, the Fukushima nuclear disaster occurred.</p>
+        <p></p>Residents in the surrounding area were evacuated. This took place as events unfolded at the nuclear power plant, and the evacuation zone was subsequently expanded as more information regarding radiation levels became available.</p>
+        <p>In the meantime, many have been able to return to their villages following large-scale soil decontamination efforts.</p>
+      </div>
+      <div class = "card2">
+        <br><h3>Doel</h3>
+        <br><p>Kapellen, the town where I live, is located about 10 km from the nuclear power plant in Doel.</p>
+      </div>
     </section>
-
+    
     <section id="section3">
       <h2>Technical setup</h2>
       <p>Goed geknutseld.</p>
