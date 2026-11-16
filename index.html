@@ -358,11 +358,12 @@
         if (!response.ok) throw new Error(`Status: ${response.status}`);
         const json = await response.json();
         document.getElementById('ha-waarde').innerText = Math.round(json.state);
+        document.getElementById('time').innerText = json.elaps;
         document.getElementById('status').innerText = "";
       }
       catch (error) {
         console.error(error);
-        document.getElementById('ha-waarde').innerText = "-b-";
+        document.getElementById('ha-waarde').innerText = "-X-";
         document.getElementById('status').innerText = "Fout: " + error.message;
       }
     }
