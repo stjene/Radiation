@@ -243,7 +243,7 @@
             </div>
             <div class="sub-card">
               <b>Estimated yearly dose</b>
-              <div id="dose">--</div>mSv
+              <div id="dose">--</div>
             </div>
           </div>
         </div>
@@ -360,7 +360,7 @@
         document.getElementById('CPM').innerText = Math.round(json.state);
         document.getElementById('time').innerText = json.elaps;
         document.getElementById('avg').innerText = Math.round(json.avg*10)/10;
-        document.getElementById('dose').innerText = Math.round(json.dose*1000)/1000;
+        document.getElementById('dose').innerText = Math.round(json.dose*1000)/1000+mSv;
         document.getElementById('status').innerText = "";
       }
       catch (error) {
