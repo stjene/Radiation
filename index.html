@@ -359,12 +359,16 @@
         const json = await response.json();
         document.getElementById('ha-waarde').innerText = Math.round(json.state);
         document.getElementById('time').innerText = json.elaps;
+        document.getElementById('avg').innerText = json.avg;
+        document.getElementById('dose').innerText = json.dose;
         document.getElementById('status').innerText = "";
       }
       catch (error) {
         console.error(error);
         document.getElementById('ha-waarde').innerText = "-X-";
         document.getElementById('time').innerText = "-X-";
+        document.getElementById('avg').innerText = "-X-";
+        document.getElementById('dose').innerText = "-X-";
         document.getElementById('status').innerText = "Fout: " + error.message;
       }
     }
