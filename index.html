@@ -76,7 +76,7 @@
       text-align: left;
     }
     
-    #ha-waarde {
+    #CPM {
       font-size: 2.5rem;
       font-weight: bold;
       color: #03a9f4;
@@ -226,7 +226,7 @@
         <!-- First Tile -->
         <div class="card1">
           <b>CPM</b>
-          <div id="ha-waarde">--</div>
+          <div id="CPM">--</div>
           <div id="status"></div>
           (X minutes ago)
         </div>
@@ -357,15 +357,15 @@
         const response = await fetch(`./sensor.json?t=${new Date().getTime()}`);
         if (!response.ok) throw new Error(`Status: ${response.status}`);
         const json = await response.json();
-        document.getElementById('ha-waarde').innerText = Math.round(json.state);
+        document.getElementById('CPM').innerText = Math.round(json.state);
         document.getElementById('time').innerText = json.elaps;
-        document.getElementById('avg').innerText = json.avg;
-        document.getElementById('dose').innerText = json.dose;
+        document.getElementById('avg').innerText = Math.round(json.avg*10)/10;
+        document.getElementById('dose').innerText = Number(json.dose).toFixed(3);
         document.getElementById('status').innerText = "";
       }
       catch (error) {
         console.error(error);
-        document.getElementById('ha-waarde').innerText = "-X-";
+        document.getElementById('CPM').innerText = "-X-";
         document.getElementById('time').innerText = "-X-";
         document.getElementById('avg').innerText = "-X-";
         document.getElementById('dose').innerText = "-X-";
