@@ -82,12 +82,6 @@
       color: #03a9f4;
     }
     
-    .kaart-afbeelding {
-      display: block;
-      max-width: 50%;
-      height: auto;
-    }
-    
     ul ul {
       margin-left: 1rem;
     }
@@ -187,6 +181,29 @@
         border-bottom: 1px solid #cbd5e1;
       }
     }
+    .kaart-container {
+      position: relative;
+      display: inline-block; /* Zorgt dat de container exact even groot is als je afbeelding */
+      margin-top: 1.5rem;
+      max-width: 50%;
+    }
+    
+    .kaart-container img {
+      display: block; /* Verwijdert een kleine witruimte onder de afbeelding */
+      max-width: 100%;
+      height: auto; /* Voorkomt overlap met de footer */
+    }
+    
+    .wind-overlay {
+      position: absolute;
+      top: 39%;
+      left: 44%;
+      width: 300px;
+      height: 300px;
+      transform: translate(-50%, -50%);
+      pointer-events: none; /* Zorgt dat je nog gewoon op de kaart kunt klikken/slepen */
+      overflow: visible;
+    }
   </style>
 </head>
 <body>
@@ -243,7 +260,23 @@
       </ul>
       <br>My Geiger-Müller counter detects ambient radiation. Its sensitivity yields an average of 25 clicks per minute, corresponding to the expected normal background radiation of 0,8mSv/y.
       <br>The radioactive decay causing this radiation is a random process, governed by the weak nuclear force (the probabilistic nature of the decay time is described by the Quantum Field Theory). Because of this randomness, the count rate fluctuates significantly from minute to minute. The count typically ranges between 15 and 50 clicks per minute.
-      <br><br><br><img src="Doel-map.png" alt="Map" class="kaart">
+      
+      <br><br><div class="kaart-container">
+        <img src="Doel-map.png" alt="Map">
+        <!-- De SVG-overlay gecentreerd op de kaart -->
+        <svg class="wind-overlay" viewBox="-150 -150 300 300">
+          <defs>
+            <!-- Definieer de pijlpunt -->
+            <marker id="pijl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="red" />
+            </marker>
+          </defs>
+          <g id="wind-vector">
+            <!-- Lijn met de pijlpunt aan het einde -->
+            <line id="pijl-lijn" x1="0" y1="0%" x2="0" y2="-50" stroke="red" stroke-width="3" marker-end="url(#pijl)" />
+          </g>
+        </svg>
+      </div>
     </section>
 
     <section id="section2">
@@ -332,6 +365,20 @@
     // Direct laden en elke 15 seconden verversen
     laadGitHubData();
     setInterval(laadGitHubData, 60000);
+    
+    function updateWindVector(windRichtingGraden, windSterkteKnopen) {
+      const vectorGroep = document.getElementById('wind-vector');
+      const lijn = document.getElementById('pijl-lijn');
+      // 1. Lengte berekenen (bijv. 4 pixels per knoop, met een minimum van 20px)
+      const lengte = Math.max(20, windSterkteKnopen * 4);
+      lijn.setAttribute('y2', -lengte);
+      // 2. Draai de pijl (tel 180° op zodat de pijl wijst waar de wind NAARTOE gaat)
+      const blaasRichting = (windRichtingGraden + 180) % 360;
+      vectorGroep.setAttribute('transform', `rotate(${blaasRichting})`);
+    }
+    
+    // Voorbeeld
+    updateWindVector(90, 20);
   </script>
 
 </body>
