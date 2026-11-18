@@ -382,7 +382,7 @@
     setInterval(laadGitHubData, 60000);
     function updateWindVector() {
       const windRichting = (Math.round(json.windr) + 180) % 360;
-      const windSterkte = Math.max(20, Math.round(json.winds) * 4);
+      const windSterkte = Math.max(40, Math.round(json.winds) /5 *2);
       document.getElementById('pijl-lijn').setAttribute('y2', -windSterkte);
       document.getElementById('wind-vector').setAttribute('transform', `rotate(${windRichting})`);
     }
