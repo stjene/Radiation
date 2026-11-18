@@ -381,7 +381,7 @@
     laadGitHubData();
     setInterval(laadGitHubData, 60000);
     
-    function updateWindVector(windRichtingGraden, windSterkteKnopen) {
+    function updateWindVector() {
       const windRichting = Math.round(json.windr);
       const windSterkte = Math.round(json.winds);
       const vectorGroep = document.getElementById('wind-vector');
@@ -393,9 +393,6 @@
       const blaasRichting = (windRichting + 180) % 360;
       vectorGroep.setAttribute('transform', `rotate(${blaasRichting})`);
     }
-    
-    // Voorbeeld
-    updateWindVector(90, 20);
   </script>
 
 </body>
