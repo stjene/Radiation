@@ -370,7 +370,7 @@
         document.getElementById('status').innerText = "";
         // Wind
         const windRichting = (Number(json.windr) + 180) % 360;
-        const windSterkte = Math.min(100, Number(json.winds) * 40);
+        const windSterkte = Math.min(150, Number(json.winds) * 1.5);
         if (!isNaN(windRichting) && !isNaN(windSterkte)) {
           document.getElementById('pijl-lijn').setAttribute('y2', -windSterkte);
           document.getElementById('wind-vector').setAttribute('transform', `rotate(${windRichting})`);
