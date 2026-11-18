@@ -385,6 +385,8 @@
         document.getElementById('status').innerText = "Fout: " + error.message;
       }
     }
+    laadGitHubData();
+    setInterval(laadGitHubData, 60000);
   </script>
 
 </body>
