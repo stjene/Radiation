@@ -380,18 +380,11 @@
     // Direct laden en elke 15 seconden verversen
     laadGitHubData();
     setInterval(laadGitHubData, 60000);
-    
     function updateWindVector() {
-      const windRichting = Math.round(json.windr);
-      const windSterkte = Math.round(json.winds);
-      const vectorGroep = document.getElementById('wind-vector');
-      const lijn = document.getElementById('pijl-lijn');
-      // 1. Lengte berekenen (bijv. 4 pixels per knoop, met een minimum van 20px)
-      const lengte = Math.max(20, windSterkte * 4);
-      lijn.setAttribute('y2', -lengte);
-      // 2. Draai de pijl (tel 180° op zodat de pijl wijst waar de wind NAARTOE gaat)
-      const blaasRichting = (windRichting + 180) % 360;
-      vectorGroep.setAttribute('transform', `rotate(${blaasRichting})`);
+      const windRichting = (Math.round(json.windr) + 180) % 360;
+      const windSterkte = Math.max(20, Math.round(json.winds) * 4);
+      document.getElementById('pijl-lijn').setAttribute('y2', -windSterkte);
+      document.getElementById('wind-vector').setAttribute('transform', `rotate(${windRichting})`);
     }
   </script>
 
