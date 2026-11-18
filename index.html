@@ -367,6 +367,7 @@
         document.getElementById('avg').innerText = Math.round(json.avg*10)/10;
         document.getElementById('dose').innerText = Math.round(json.dose*1000)/1000+'mSv';
         document.getElementById('status').innerText = "";
+        updateWindVector(json); 
       }
       catch (error) {
         console.error(error);
@@ -380,9 +381,10 @@
     // Direct laden en elke 15 seconden verversen
     laadGitHubData();
     setInterval(laadGitHubData, 60000);
-    function updateWindVector() {
+    function updateWindVector(json) {
       const windRichting = (Math.round(json.windr) + 180) % 360;
       const windSterkte = Math.min(50, Math.round(json.winds) /5 *4);
+      if (isNaN(windRichting) || isNaN(windSterkte)) return; // sensor.json mist de waarden
       document.getElementById('pijl-lijn').setAttribute('y2', -windSterkte);
       document.getElementById('wind-vector').setAttribute('transform', `rotate(${windRichting})`);
     }
