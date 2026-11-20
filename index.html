@@ -362,6 +362,11 @@
         const response = await fetch(`./sensor.json?t=${new Date().getTime()}`);
         if (!response.ok) throw new Error(`Status: ${response.status}`);
         const json = await response.json();
+        const lastModified = response.headers.get('Last-Modified');
+        if (lastModified) {
+          const ageMinutes = Math.floor((Date.now() - new Date(lastModified).getTime()) / 60000);
+          document.getElementById("age").textContent = `${ageMinutes} min old`;
+        }
         // Straling
         document.getElementById('CPM').innerText = Math.round(json.state);
         document.getElementById('time').innerText = json.elaps;
