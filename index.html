@@ -233,7 +233,7 @@
           <b>CPM</b>
           <div id="CPM">--</div>
           <div id="status"></div>
-          (<div id="age">/div>min ago)
+          <div id="age">/div>
         </div>
         <div class="card-wide">
           <b>Current measurement</b>
@@ -365,7 +365,7 @@
         const lastModified = response.headers.get('Last-Modified');
         if (lastModified) {
           const ageMinutes = Math.floor((Date.now() - new Date(lastModified).getTime()) / 60000);
-          document.getElementById("age").textContent = `${ageMinutes} min old`;
+          document.getElementById("age").textContent = `(${ageMinutes} min old)`;
         }
         // Straling
         document.getElementById('CPM').innerText = Math.round(json.state);
