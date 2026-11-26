@@ -385,7 +385,10 @@
           document.getElementById('wind-vector').setAttribute('transform', `rotate(${windRichting})`);
         }
         //Temperatuur
-        document.getElementById('temp').innerText = json.temperatuur;
+        if (json.temp !== undefined) {
+          const temperatuur = Math.round(Number(json.temp) * 10) / 10;
+          document.getElementById('temp').textContent = `${temperatuur} °C`;
+        }
       }
       catch (error) {
         console.error(error);
