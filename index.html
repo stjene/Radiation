@@ -286,7 +286,7 @@
           </g>
           <g id="temp-label" transform="translate(0, 22)">
             <rect x="-28" y="-12" width="56" height="20" rx="4" fill="white" stroke="#1e293b" stroke-width="1.5" opacity="0.9" />
-            <text id="temp-tekst" x="0" y="2" font-size="12" font-weight="bold" font-family="system-ui, sans-serif" text-anchor="middle" fill="#0f172a">-- °C</text>
+            <text id="temp" x="0" y="2" font-size="12" font-weight="bold" font-family="system-ui, sans-serif" text-anchor="middle" fill="#0f172a">-- °C</text>
           </g>
         </svg>
       </div>
@@ -384,6 +384,8 @@
           document.getElementById('pijl-lijn').setAttribute('y2', -windSterkte);
           document.getElementById('wind-vector').setAttribute('transform', `rotate(${windRichting})`);
         }
+        //Temperatuur
+        document.getElementById('temp').innerText = json.temperatuur;
       }
       catch (error) {
         console.error(error);
@@ -391,6 +393,7 @@
         document.getElementById('time').innerText = "-X-";
         document.getElementById('avg').innerText = "-X-";
         document.getElementById('dose').innerText = "-X-";
+        document.getElementById('temp').innerText = "-X-";
         document.getElementById('status').innerText = "Fout: " + error.message;
       }
     }
