@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+uur<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -385,8 +385,8 @@
           document.getElementById('wind-vector').setAttribute('transform', `rotate(${windRichting})`);
         }
         //Temperatuur
-        if (json.temp !== undefined) {
-          const temperatuur = Math.round(Number(json.temp) * 10) / 10;
+        if (json.temperatuur !== undefined) {
+          const temperatuur = Math.round(Number(json.temperatuur) * 10) / 10;
           document.getElementById('temp').textContent = `${temperatuur} °C`;
         }
       }
